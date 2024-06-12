@@ -1,5 +1,7 @@
 <?php
-$password = "Ciao, quanto lunga deve essere la password?"
+$password = "La password random generata è:";
+$passwordLength = $_GET["lunghezza"];
+$array = ["x"]
 ?>
 
 <!DOCTYPE html>
@@ -10,18 +12,23 @@ $password = "Ciao, quanto lunga deve essere la password?"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
-    <title>FORM GENERATOR PASSWORD</title>
+    <title>PASSWORD PHP</title>
 </head>
 
 <body>
-    <h1 class="text-center py-2 bg-success m-0">
-        <?= $password ?>
+
+    <h1 class="text-center m-0">
+        <?= $password . " " . $passwordLength . " " . "Caratteri" ?>
     </h1>
 
-    <form action="password.php" method="get" class="text-center p-2">
-        <input type="number" name="lunghezza" placeholder="Inserisci lunghezza password">
-        <button type="submit">Genera</button>
-    </form>
+    <h2 class="text-center m-0">
+        La password è:
+        <?php
+        for ($i = 0; $i <= $passwordLength - 1; $i++) {
+            echo $array[0];
+        }
+        ?>
+    </h2 class="text-center m-0">
 </body>
 
 </html>
