@@ -1,7 +1,8 @@
 <?php
+$passwordTitle = "Ciao, quanto lunga deve essere la password?";
 $password = "La password random generata è:";
 // RICHIAMO INPUT PER LA LUNGHEZZA DELLA PASSWORD
-$passwordLength = $_GET["lunghezza"];
+$passwordLength = $_GET["lunghezza"] ?? null;
 //CREO ARRAY DI STRINGHE PER GENERARE PASSWORD RANDOM
 $allowedCharacters = [
     'character' => "ABCDEFGHILMNOPQRSTUVZXYWJabcdefghilmnopqrstuvzxywj.:,;-_#[]{}!£<>%&/()='^1234567890",
@@ -9,6 +10,7 @@ $allowedCharacters = [
     // 'simbol' => ".:,;-_#[]{}!£<>%&/()='^",
     // 'number' => "1234567890",
 ];
+include_once __DIR__ . '/function.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,22 +26,32 @@ $allowedCharacters = [
 
 <body>
 
-    <h1 class="text-center m-0">
-        <?= $password . " " . $passwordLength . " " . "Caratteri" ?>
+    <h1 class="text-center py-2 bg-success m-0">
+        <?= $passwordTitle ?>
     </h1>
 
-    <pre>
+    <form action="password.php" method="get" class="text-center p-2">
+        <!-- L'UTENTE SCEGLIE DI QUANTI CARATTERI DEVE ESSERE LA PASSWORD -->
+        <label for="scegli-numerO">Lunghezza password da generare</label>
+        <input type="number" name="lunghezza" id="scegli-numero" placeholder="Inserisci lunghezza password">
+        <!-- INVIO I DATI -->
+        <div class="py-2">
+            <button type="submit">Genera</button>
+        </div>
+    </form>
+
+    <h2 class="text-center m-0">
+        <?= $password . " " . $passwordLength . " " . "Caratteri" ?>
+    </h2>
+
+    <!-- <pre>
         <?= var_dump($allowedCharacters['character']) ?>
-    </pre>
+    </pre> -->
 
     <h2 class="text-center m-0">
         La password è:
         <?php
-        //CICLO DOVE DICHIARO CHE FINCHE LA I NON E' UGUALE ALLA LUNGHEZZA DEI CARATTERI SCELTI DALL'UTENTE CONITNUARE A CICLARE E GENERARE CARATTERI
-        for ($i = 0; $i <= $passwordLength - 1; $i++) {
-            //STAMPO IN PAGINA LA SCELTA DEI CARATTERI SCELTI DALL'UTENTE E CON LA FUNZIONE RANDOM GLI DICO DI SCEGLIARE QUALE LETTERA STAMPARE
-            echo $allowedCharacters['character'][rand(0, strlen($allowedCharacters['character']) - 1)];
-        }
+        generatedPassword($passwordLength, $allowedCharacters)
         ?>
     </h2 class="text-center m-0">
 </body>

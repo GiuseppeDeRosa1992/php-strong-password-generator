@@ -1,0 +1,9 @@
+<?php
+function generatedPassword($arg1, $arg2)
+{
+    //CICLO DOVE DICHIARO CHE FINCHE LA I NON E' UGUALE ALLA LUNGHEZZA DEI CARATTERI SCELTI DALL'UTENTE CONITNUARE A CICLARE E GENERARE CARATTERI
+    for ($i = 0; $i <= $arg1 - 1; $i++) {
+        //STAMPO IN PAGINA LA SCELTA DEI CARATTERI SCELTI DALL'UTENTE E CON LA FUNZIONE RANDOM GLI DICO DI SCEGLIARE QUALE LETTERA STAMPARE
+        echo $arg2['character'][rand(0, strlen($arg2['character']) - 1)];
+    }
+}
