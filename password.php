@@ -1,7 +1,14 @@
 <?php
 $password = "La password random generata è:";
+// RICHIAMO INPUT PER LA LUNGHEZZA DELLA PASSWORD
 $passwordLength = $_GET["lunghezza"];
-$array = ["x"]
+//CREO ARRAY DI STRINGHE PER GENERARE PASSWORD RANDOM
+$allowedCharacters = [
+    'character' => "ABCDEFGHILMNOPQRSTUVZXYWJabcdefghilmnopqrstuvzxywj.:,;-_#[]{}!£<>%&/()='^1234567890",
+    // 'lower' => "abcdefghilmnopqrstuvzxywj",
+    // 'simbol' => ".:,;-_#[]{}!£<>%&/()='^",
+    // 'number' => "1234567890",
+];
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +28,17 @@ $array = ["x"]
         <?= $password . " " . $passwordLength . " " . "Caratteri" ?>
     </h1>
 
+    <pre>
+        <?= var_dump($allowedCharacters['character']) ?>
+    </pre>
+
     <h2 class="text-center m-0">
         La password è:
         <?php
+        //CICLO DOVE DICHIARO CHE FINCHE LA I NON E' UGUALE ALLA LUNGHEZZA DEI CARATTERI SCELTI DALL'UTENTE CONITNUARE A CICLARE E GENERARE CARATTERI
         for ($i = 0; $i <= $passwordLength - 1; $i++) {
-            echo $array[0];
+            //STAMPO IN PAGINA LA SCELTA DEI CARATTERI SCELTI DALL'UTENTE E CON LA FUNZIONE RANDOM GLI DICO DI SCEGLIARE QUALE LETTERA STAMPARE
+            echo $allowedCharacters['character'][rand(0, strlen($allowedCharacters['character']) - 1)];
         }
         ?>
     </h2 class="text-center m-0">

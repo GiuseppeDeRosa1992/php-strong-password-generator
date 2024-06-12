@@ -19,8 +19,13 @@ $password = "Ciao, quanto lunga deve essere la password?"
     </h1>
 
     <form action="password.php" method="get" class="text-center p-2">
-        <input type="number" name="lunghezza" placeholder="Inserisci lunghezza password">
-        <button type="submit">Genera</button>
+        <!-- L'UTENTE SCEGLIE DI QUANTI CARATTERI DEVE ESSERE LA PASSWORD -->
+        <label for="scegli-numerO">Lunghezza password da generare</label>
+        <input type="number" name="lunghezza" id="scegli-numero" placeholder="Inserisci lunghezza password">
+        <!-- INVIO I DATI -->
+        <div class="py-2">
+            <button type="submit">Genera</button>
+        </div>
     </form>
 </body>
 
