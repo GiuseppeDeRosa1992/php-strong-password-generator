@@ -5,7 +5,8 @@ $password = "La password random generata è:";
 $passwordLength = $_GET["lunghezza"] ?? null;
 //CREO ARRAY DI STRINGHE PER GENERARE PASSWORD RANDOM
 $allowedCharacters = [
-    'character' => "ABCDEFGHILMNOPQRSTUVZXYWJabcdefghilmnopqrstuvzxywj.:,;-_#[]{}!£<>%&/()='^1234567890",
+    //PER GENERARE LA PASSWORD NON BISOGNA METTERE MINORE PER ADESSO PERCHE' SENNO ROMPE LA PASSWORD SENNO' FARE CONTROLLO IF QUANDO STAMPIAMO
+    'character' => "ABCDEFGHILMNOPQRSTUVZXYWJabcdefghilmnopqrstuvzxywj.:,;-_#[]{}!£>%&/()='^1234567890",
     // 'lower' => "abcdefghilmnopqrstuvzxywj",
     // 'simbol' => ".:,;-_#[]{}!£<>%&/()='^",
     // 'number' => "1234567890",
@@ -32,7 +33,7 @@ include_once __DIR__ . '/function.php';
 
     <form action="password.php" method="get" class="text-center p-2">
         <!-- L'UTENTE SCEGLIE DI QUANTI CARATTERI DEVE ESSERE LA PASSWORD -->
-        <label for="scegli-numerO">Lunghezza password da generare</label>
+        <label for="scegli-numero">Lunghezza password da generare</label>
         <input type="number" name="lunghezza" id="scegli-numero" placeholder="Inserisci lunghezza password">
         <!-- INVIO I DATI -->
         <div class="py-2">
